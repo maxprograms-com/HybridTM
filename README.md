@@ -1,6 +1,6 @@
 # HybridTM
 
-HybridTM is a TypeScript translation memory engine that stores bilingual content in LanceDB and scores matches by combining semantic embeddings (Xenova/Transformers.js) with the built-in MatchQuality fuzzy metric.
+HybridTM is a semantic translation memory engine that stores bilingual content in LanceDB and scores matches by combining semantic embeddings (Xenova/Transformers.js) with the built-in MatchQuality fuzzy metric.
 
 ## Highlights
 
