@@ -1027,7 +1027,7 @@ export class HybridTM {
         const tempDir = tmpdir();
         const tempFileName = 'tmx_' + Date.now() + '_' + Math.random().toString(36).substring(7) + '.tmx';
         const tempFilePath: string = join(tempDir, tempFileName);
-        const packageJson: any = await import('../package.json', { assert: { type: 'json' } });
+        const packageJson: any = await import('../package.json', { with: { type: 'json' } });
         const productName: string = packageJson.default.productName;
         const version: string = packageJson.default.version;
         const tmReader: TMReader = new TMReader({ 'productName': productName, 'version': version });
