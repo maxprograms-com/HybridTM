@@ -629,4 +629,15 @@ export class XLIFFHandler implements ContentHandler {
     getGrammar(): Grammar | undefined {
         return undefined;
     }
+
+    getCurrentText(): string {
+        let test: string = '';
+        let content: XMLNode[] = this.stack.length > 0 ? this.stack[this.stack.length - 1].getContent() : [];
+        content.forEach((node: XMLNode) => {
+            if (node instanceof TextNode) {
+                test += node.getValue();
+            }
+        });
+        return test;
+    }
 }

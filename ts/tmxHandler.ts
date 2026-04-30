@@ -11,7 +11,7 @@
  *******************************************************************************/
 
 import { createWriteStream, WriteStream } from "node:fs";
-import { Catalog, CData, ContentHandler, Grammar, TextNode, XMLAttribute, XMLElement } from "typesxml";
+import { Catalog, CData, ContentHandler, Grammar, TextNode, XMLAttribute, XMLElement, XMLNode } from "typesxml";
 import { DEFAULT_IMPORT_OPTIONS, ImportOptions, ResolvedImportOptions, resolveImportOptions } from './importOptions.js';
 import { EntryMetadata } from './langEntry.js';
 import { Utils } from './utils.js';
@@ -399,5 +399,16 @@ export class TMXHandler implements ContentHandler {
             unitId: tail[1],
             segmentId: tail[2]
         };
+    }
+
+    getCurrentText(): string {
+        let test: string = '';
+        let content: XMLNode[] = this.stack.length > 0 ? this.stack[this.stack.length - 1].getContent() : [];
+        content.forEach((node: XMLNode) => {
+            if (node instanceof TextNode) {
+                test += node.getValue();
+            }
+        });
+        return test;
     }
 }
