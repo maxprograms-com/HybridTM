@@ -10,7 +10,11 @@
         "/dist"
     ],
     "scripts": {
-        "build": "tsc"
+        "clean": "rm -rf dist",
+        "build": "tsc",
+        "prepublishOnly": "npm run clean && npm run build",
+        "pretest": "npm run build",
+        "test": "node --test"
     },
     "author": {
         "name": "Rodolfo M. Raya",
